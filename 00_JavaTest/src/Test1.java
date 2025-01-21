@@ -20,8 +20,17 @@ public class Test1 {
 		 * Git push 주의사항
 		 * .matadata 폴더 : eclipse 설정 모음 폴더
 		 * .classpath : class 경로 인식 방법 설정
-         * bin : 컴파일된 파일(바이트 코드) 모인 폴더
-         * .class : 컴파일된 파일(바이트 코드)
+     * bin : 컴파일된 파일(바이트 코드) 모인 폴더
+     * .class : 컴파일된 파일(바이트 코드)
+     * 
+     * JVM(Java Virtual Machine)
+     * - Java 코드를 실행시키는 프로그램
+     * 
+     * JRE(Java Runtime Environment, 자사 실행 환경)
+     * - 자바를 실행할 수 있게 하는 프로그램
+     * 
+     * JDK(Java Devleopment Kit)
+     * - JRE + 자바 개발 도구
 		 * */
 	}
 
