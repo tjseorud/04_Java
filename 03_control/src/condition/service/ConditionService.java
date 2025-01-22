@@ -119,23 +119,24 @@ public class ConditionService {
 	 *</pre>
 	 */
 	public void method4() {
-		String result;
+		String result =null;	
+//		System.out.println(result);	//Java 지역변수는 초기화 안되면 사용불가 
 		System.out.print("이름입력 :");
 		String userName =sc.next();
 		
-		System.out.print("중간고사 점수입력 :");
+		System.out.print("중간고사 점수(40%) :");
 		int test1 =sc.nextInt();
 		if(test1 <0 || test1 >100) {
 			System.out.println("입력값이 0미만이거나 100을 초과했습니다");
 			return;
 		}
-		System.out.print("기말고사 점수입력 :");
+		System.out.print("기말고사 점수(50%) :");
 		int test2 =sc.nextInt();
 		if(test2 <0 || test2 >100) {
 			System.out.println("입력값이 0미만이거나 100을 초과했습니다");
 			return;
 		}
-		System.out.print("과제 점수입력 :");
+		System.out.print("과제 점수(10%) :");
 		int test3 =sc.nextInt();
 		if(test3 <0 || test3 >100) {
 			System.out.println("입력값이 0미만이거나 100을 초과했습니다");
@@ -143,11 +144,18 @@ public class ConditionService {
 		}
 		
 		double input =(test1*0.4)+(test2*0.5)+(test3*0.1);
-		result =input>=95?"A+":input>=90?"A":input>=85?"B+":input>=80?"B":input>=75?"C+":input>=70?"C":input>=65?"D+":input<60?"F":"D";		
-		System.out.println("이름 : "+userName);
-		System.out.println("중간고사 점수(40%) : "+test1);
-		System.out.println("기말고사 점수(50%) : "+test2);
-		System.out.println("과제 점수(10%) : "+test3);
-		System.out.printf("%s의 최종 점수 : %.1f점 \n성적 : %s",userName,input,result);
+		result =input>=95?"A+":input>=90?"A":input>=85?"B+":input>=80?"B":input>=75?"C+":input>=70?"C":input>=65?"D+":input<60?"F":"D";	
+		
+//		switch((int)input/10) {	//switch ()내에는 정수/문자열 작성가능 
+//			case 10, 9:	result ="A"; break;	//Java 에서만 ',' 가능 JS에선 X
+//			case 8: result ="B"; break;
+//			case 7: result ="C"; break;
+//			case 6: result ="D"; break;
+//			default: result ="F";
+//		}
+//		if(input ==100 || input >=60.0 && input %10 >=5) {
+//			result += "+";
+//		}
+		System.out.printf("\n%s의 최종 점수 : %.1f점 \n성적 : %s",userName,input,result);
 	}
 }
