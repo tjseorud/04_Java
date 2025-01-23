@@ -111,13 +111,14 @@ public class LoopPractice {
 	}
 	
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * <pre/>
+	 * <pre>
 	 * ex.
 	 * 정수 입력 : 4
 	 * *
 	 * **
 	 * ***
 	 * ****
+	 * </pre>
 	 */
 	public void practice7(){
 		System.out.print("정수 입력 :");
@@ -132,13 +133,14 @@ public class LoopPractice {
 	}
 	
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * <pre/>
+	 * <pre>
 	 * ex.
 	 * 정수 입력 : 4
 	 * ****
 	 * ***
 	 * **
 	 * *
+	 * </pre>
 	 */
 	public void practice8(){
 		System.out.print("정수 입력 :");
@@ -153,31 +155,32 @@ public class LoopPractice {
 	}
 	
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * <pre/>
+	 * <pre>
 	 * ex.
 	 * 정수 입력 : 4
 	 *    *
 	 *   **
 	 *  ***
 	 * ****
+	 * </pre>
 	 */
 	public void practice9(){
 		System.out.print("정수 입력 :");
 		int input =scan.nextInt();
-		
-		for(int i=input; i>0; i--) {
-			for(int j=1; j<=i; j++) {
+
+		for(int i=1; i<=input; i++) {
+			for(int j=1; j<=input-i; j++) {
 				System.out.print(" ");	
 			}
-			for(int j=input; j>=i; j--) {
-				System.out.print("*");	
+			for(int j=1; j<=i; j++) {
+				System.out.print("*");
 			}
 			System.out.println();
 		}
 	}
 	
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * * <pre/>
+	 * * <pre>
 	 * ex.
 	 * 정수 입력 : 3
 	 * *
@@ -185,6 +188,7 @@ public class LoopPractice {
 	 * ***
 	 * **
 	 * *
+	 * </pre>
 	 */
 	public void practice10(){
 		System.out.print("정수 입력 :");
@@ -204,32 +208,47 @@ public class LoopPractice {
 		}
 	}
 	
+	
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * <pre/>
+	 * <pre>
 	 * ex.
 	 * 정수 입력 : 4
 	 *    *
 	 *   ***
 	 *  *****
 	 * *******
+	 * </pre>
 	 */
 	public void practice11(){
 		System.out.print("정수 입력 :");
 		int input =scan.nextInt();
-		
-		for(int i=input; i>0; i--) {
-			for(int j=1; j<=i; j++) {
+		//v1
+		for(int i=1; i<=input; i++) {
+			for(int j=1; j<=input-i; j++) {
 				System.out.print(" ");	
 			}
-			for(int j=input; j>=i; j--) {
+			for(int j=1; j<=2*i-1; j++) {
 				System.out.print("*");
 			}
 			System.out.println();
 		}
+		//v2
+		for(int i=1; i<=input; i++) {			
+			for(int j=1; j<=2*input-1; j++) {
+//				if(j <=input-i) {
+				if(input-i>= j || input+i<=j) {
+					System.out.print(" ");
+				}else {
+					System.out.print("*");	
+				}
+			}
+			System.out.println();
+		}	
 	}
+	
 
 	/**다음과 같은 실행 예제를 구현하세요.
-	 * <pre/>
+	 * <pre>
 	 * ex.
 	 * 정수 입력 : 5
 	 * *****
@@ -237,6 +256,7 @@ public class LoopPractice {
 	 * *   *
 	 * *   *
 	 * *****
+	 * </pre>
 	 */
 	public void practice12(){
 		System.out.print("정수 입력 :");
@@ -244,7 +264,11 @@ public class LoopPractice {
 		
 		for(int i=1; i<=input; i++) {
 			for(int j=1; j<=input; j++) {
-				System.out.print("*");
+				if(i==1 || i==input || j==1 || j==input) {	//처음/마지막 행/열만 *출력
+					System.out.print("*");
+				}else {
+					System.out.print(" ");	
+				}
 			}
 			System.out.println();
 		}
@@ -335,12 +359,21 @@ public class LoopPractice {
 			System.out.println("잘못 입력하셨습니다.");
 			return;
 		}
-		for(int i=2; i<=input; i++) {
-			if(i %2 ==0) {
+		
+		for(int i=2; i<=input; i++) {	//2부터 입력받은 수까지 1개씩 접근
+			boolean flag =true;	//신호용 /true :소수O /false :소수X 
+			
+			for(int j=2; j<i; j++) {	//1과 자기자신(input)을 뺀 정수를 한 개씩 접근(X)
+				if(i %j ==0) {	//1과 자기자신 빼고 나누어 떨어지는 수 존개
+					flag =false;
+					break;
+				}
+			}
+			if(flag) {
 				System.out.print(i+" ");
-				count++;					
+				count++;
 			}
 		}
-		System.out.printf("\n2부터 %d까지 소수의 개수는 %d개입니다.",input,count);
+		System.out.printf("\n2부터 %d까지 소수의 개수는 %d개 입니다.",input,count);
 	}
 }
