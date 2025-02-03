@@ -19,6 +19,7 @@ public class StudentDTO {
 		this.name =name;
 		this.gender =gender;
 	}
+	
 	/* 해당 클래스에는 생성자가 존재하기 때문에 컴파일러가 "기본 생성자"를 자동으로 추가하지 않는다
 	 * 	-> 객체 생성시 필수적으로 전달 받아야하는 값이 존재할때 기본생성자 없이 지금처럼 매개변수 생성자만 작성한다
 	 */
@@ -68,7 +69,7 @@ public class StudentDTO {
 	}
 	public String toString() {
 		//[학번] 이름(성별)
-		//HTML : 100 / CSS : 50 : / JS :70 / Java : 100
-		return String.format("[%s] %s(%c) \n"+"HTML :%d / CSS : %d / JS :%d / Java :%d \n", studentNumber,name,gender,html,css,js,java);
+		//HTML :100 / CSS :50 : / JS :70 / Java :100
+		return String.format("[%s] %s(%c) \n"+"HTML :%d / CSS :%d / JS :%d / Java :%d", studentNumber,name,gender,html,css,js,java);
 	}
 }
