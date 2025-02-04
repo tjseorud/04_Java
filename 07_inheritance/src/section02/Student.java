@@ -1,7 +1,6 @@
 package section02;
 
 /**Person class를 상속받은 Student class
- * 
  */
 public class Student extends Person {
 	private String schoolName;
@@ -32,7 +31,27 @@ public class Student extends Person {
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
+	/*super 참조변수(부모참조변수)
+	 * -자식 내 부모객체를 참조하는 변수
+	 * -부모의 필드/메서드에 접근하기위해 사용
+	 */
 	public String toString() {
-		return String.format("name :%s / age :%d / schoolName :%s", getName(),getAge(),schoolName);
+		return super.toString()+" / schoolName :"+schoolName;	//super.toString() :부모의 toString() 메서드 호출
+	}
+//	public String toString() {
+//		return String.format("name :%s / age :%d / schoolName :%s", getName(),getAge(),schoolName);
+//	}
+	/*Person.introduce() 메서드 오버라이딩(재정의)
+	 * 오버라이딩 성립조건
+	 * [변경불가] 
+	 *  -반환형,메서드명,매개변수(개수,순서,타입)
+	 * [변경가능] 
+	 *  -접근제어자(같거나 넓은범위),예외처리(같거나 좁은범위)
+	 */
+	//Person.introduce() final
+	//Cannot override the final method from Person
+	@Override
+	public String introduce(String alias) {
+		return String.format("[Student Override] 이름은 %s, %s 이죠",super.getName(),alias);
 	}
 }
