@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import generice.Child;
+import generice.Parent;
+
 public class ListService {
 	/*[Collection Framework]
 	 * -Java에서 제공하는 자료구조모음
@@ -116,7 +119,7 @@ public class ListService {
 //		List<Integer> list =new ArrayList<Integer>();	//부모 타입 참조변수 List
 		List<Integer> list =new LinkedList<Integer>();	//중간에 추가,수정,삭제가 빠른 List
 		Random random =new Random();	//난수 생성 객체
-		//1970.1.1 09:00:00.000(한국 기준)을 기준으로 현재 얼마나 시간이 지났는지 ms(1/1000초)단위로 계산해서 반환
+		//1970.01.01 09:00:00.000(한국 기준)을 기준으로 현재 얼마나 시간이 지났는지 ms(1/1000초)단위로 계산해서 반환
 		long start =System.currentTimeMillis();	
 //		try {
 //			Thread.sleep(1000);	//현재 쓰레드를 1초(1000ms) 동안 멈춤
@@ -132,5 +135,28 @@ public class ListService {
 		long end =System.currentTimeMillis();	
 		
 		System.out.println("걸린 시간 :"+(end -start)+"ms");
+	}
+	public void test4() {
+		List<Parent> list1 =new ArrayList<Parent>();	//부모 타입만 저장할수 있는 list
+		List<Child> list2 =new ArrayList<Child>();		//자식 타입만 저장할수 있는 list
+		List<Parent> list3 =new ArrayList<Parent>();	//list1, list2 하나로 합치기
+		list1.add(new Parent());
+		list2.add(new Child(1));
+		list2.add(new Child(2));
+		list2.add(new Child(3));
+		/*boolean addAll(Collection<? extends E> c)
+		 * -Collection 상속객체(List, Set)을 현재 List의 제일 뒤에 추가
+		 * -E :현재 List에 제한된 타입 ==Parent
+		 * -? :Parent 또는 Child
+		 */
+		list3.addAll(list1);	//List<Parent>
+		list3.addAll(list2);	//List<Child>
+		
+//		List<String> temp =new ArrayList<String>();
+//		list3.addAll(temp);		//String은 Parent 상속관계 X ->Err
+		
+		for(Parent p :list3) {
+			System.out.println(p);
+		}
 	}
 }
