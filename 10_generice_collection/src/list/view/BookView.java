@@ -60,9 +60,9 @@ public class BookView {
 				case 3: { addBook(); break; }
 				case 44: { modifyBookPrice(); break; }
 				case 4: { modifyBookPrice2(); break; }
-				case 5: { deleteBook(); break; }
+				case 5: { removeBook(); break; }
 				case 6: { selectTitle(); break; }
-				case 7: { deleteBookTitle(); break; }
+				case 7: { removeBookTitle(); break; }
 				case 8: { selectPublisherAll(); break; }
 				case 9: { selectAuthorAll(); break; }
 				case 10: { searchBook(); break; }
@@ -191,12 +191,12 @@ public class BookView {
 	 *  단, 해당 index에 책이 없다면 "해당 인덱스에 책이 존재하지 않습니다",
    *  있다면 "[책제목] 책이 제거되었습니다" 출력
 	 */
-	private void deleteBook() {
+	private void removeBook() {
 		System.out.println("\n*** 책 제거하기 ***");
 		System.out.print("제거할 책 인덱스 번호 >>");
 		int index =sc.nextInt();
 		
-		BookDTO book =service.deleteBook(index);
+		BookDTO book =service.removeBook(index);
 		if(book ==null) {
 			System.out.println("해당 index에 책이 존재하지 않습니다");
 		}else {
@@ -222,12 +222,12 @@ public class BookView {
 	}
 	/**7. 제목이 일치하는 책 제거하기
 	 */
-	private void deleteBookTitle() {
+	private void removeBookTitle() {
 		System.out.println("\n*** 제목이 일치하는 책 제거하기 ***");
 		System.out.print("제거할 책 제목 >>");
 		String title =sc.nextLine();	
 		
-		BookDTO book =service.deleteBookTitle(title);
+		BookDTO book =service.removeBookTitle(title);
 		if(book ==null) {
 			System.out.println("해당 책이 존재하지 않습니다");
 			return;

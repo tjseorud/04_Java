@@ -73,7 +73,7 @@ public class BookService {
 	 * @param index
 	 * @return 
 	 */
-	public BookDTO deleteBook(int index) {
+	public BookDTO removeBook(int index) {
 		if(checkIndex(index) ==false) { return null; }
 		return bookList.remove(index);	//bookList에서 index 번쨰 요소 제거
 	}
@@ -93,7 +93,7 @@ public class BookService {
 	 * @param title :삭제할 책
 	 * @return 없다면 :return null, 있다면 제거된 BookDTO 반환
 	 */
-	public BookDTO deleteBookTitle(String title) {		
+	public BookDTO removeBookTitle(String title) {		
 		BookDTO book = selectTitle(title);		
 		if(book ==null) { return null; }		
 		bookList.remove(book);	//bookList에 저장된 객체(BookDTO)가 equals() 오버라이딩이 되어있어야 사용 가능한 방법
