@@ -5,11 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import section03.dto.Member;
 
 public class ObjectService {
-	/** */
+	/**Member 객체 하나를 파일로 출력하기*/
 	public void outputMenber() {
 		//출력용 스트림 참조변수 선언
 		FileOutputStream fos =null;		//기반 스트림
@@ -23,9 +25,9 @@ public class ObjectService {
 			oos.writeObject(member);	//보조 스트림 이용해서 파일에 Member 객체출력
 			System.out.println("출력 완료");
 			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if(oos !=null) {
 					oos.close();
@@ -51,13 +53,69 @@ public class ObjectService {
 			 */
 			System.out.println("읽어온 Member\n"+member);
 			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if(ois !=null) { 
 					ois.close();
 				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void outputMemberList() {
+		/*Stream 객체 참조변수*/
+		FileOutputStream fos =null;
+		ObjectOutputStream oos =null;
+		
+		try {
+			List<Member> memberList =new ArrayList<Member>();
+			memberList.add(new Member("member1","pass1","짱구"));
+			memberList.add(new Member("member2","pass2","맹구"));
+			memberList.add(new Member("member3","pass3","훈이"));
+			
+			fos =new FileOutputStream("io_test/byte/MemberList.bin");
+			oos =new ObjectOutputStream(fos);
+			oos.writeObject(memberList);	//객체출력
+			System.out.println("회원 목록 출력 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();	//예외발생 메서드 추적
+		} finally {
+			try {
+				if(oos !=null) oos.close(); //보조 스트림 close 시 기반 스트림도 같이 close
+			} catch (IOException e) {
+				e.printStackTrace();	
+			} 
+		}
+	}
+	/**MemberList.bin 읽어오기
+	 */
+	public void inputMemberList() {
+		FileInputStream fis =null;
+		ObjectInputStream ois =null;
+		
+		try {
+			fis =new FileInputStream("io_test/byte/MemberList.bin");
+			ois =new ObjectInputStream(fis);
+			
+			/*직렬화된 상태로 저장된 List<Member> 객체를 읽어와
+			 * 역직렬화해서 저장
+			 */
+			List<Member> memberList =(List<Member>) ois.readObject();
+			
+			for(Member member :memberList) {
+				System.out.println(member.toString());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ois !=null) ois.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
