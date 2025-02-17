@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/00_JavaTest/00_JavaTest.iml" filepath="$PROJECT_DIR$/00_JavaTest/00_JavaTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01_variable/01_variable.iml" filepath="$PROJECT_DIR$/01_variable/01_variable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_operator/02_operator.iml" filepath="$PROJECT_DIR$/02_operator/02_operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_control/03_control.iml" filepath="$PROJECT_DIR$/03_control/03_control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_array/04_array.iml" filepath="$PROJECT_DIR$/04_array/04_array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_object_class/05_object_class.iml" filepath="$PROJECT_DIR$/05_object_class/05_object_class.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_object_array/06_object_array.iml" filepath="$PROJECT_DIR$/06_object_array/06_object_array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_inheritance/07_inheritance.iml" filepath="$PROJECT_DIR$/07_inheritance/07_inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_polymorphism/08_polymorphism.iml" filepath="$PROJECT_DIR$/08_polymorphism/08_polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_java_api/09_java_api.iml" filepath="$PROJECT_DIR$/09_java_api/09_java_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10_generice_collection/10_generice_collection.iml" filepath="$PROJECT_DIR$/10_generice_collection/10_generice_collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11_exception/11_exception.iml" filepath="$PROJECT_DIR$/11_exception/11_exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12_io/12_io.iml" filepath="$PROJECT_DIR$/12_io/12_io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13_inner_class/13_inner_class.iml" filepath="$PROJECT_DIR$/13_inner_class/13_inner_class.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14_lambda/14_lambda.iml" filepath="$PROJECT_DIR$/14_lambda/14_lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/15_stream_api/15_stream_api.iml" filepath="$PROJECT_DIR$/15_stream_api/15_stream_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16_membership_project/16_membership_project.iml" filepath="$PROJECT_DIR$/16_membership_project/16_membership_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/17_todo_list/17_todo_list.iml" filepath="$PROJECT_DIR$/17_todo_list/17_todo_list.iml" />
+    </modules>
+  </component>
+</project>

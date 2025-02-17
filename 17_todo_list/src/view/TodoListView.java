@@ -123,9 +123,7 @@ public class TodoListView {
 	private void todoListFullView() {
 		
 		System.out.println("\n===============[1. Todo List Full View]===============\n");
-		
-		
-		
+		System.out.println(service.todoListFullView());	
 	}
 	
 	
@@ -139,7 +137,10 @@ public class TodoListView {
 	private void todoDetailView() throws NumberFormatException, IOException {
 		
 		System.out.println("\n===============[2. Todo Detail View]===============\n");
+		System.out.print("Detail number >>> ");
+		int input = Integer.parseInt(br.readLine());
 		
+		service.todoDetailView(input);
 		
 	}
 	
@@ -154,7 +155,13 @@ public class TodoListView {
 	private void todoAdd() throws IOException {
 		
 		System.out.println("\n===============[3. Todo Add]===============\n");
+		System.out.print("title >>>");
+		String title =br.readLine();
 		
+		System.out.print("detail >>>");
+		String detail =br.readLine();
+		
+		service.todoAdd(title, detail);
 	}
 	
 	
@@ -167,7 +174,10 @@ public class TodoListView {
 	 */
 	private void todoComplete() throws NumberFormatException, IOException {
 		System.out.println("\n===============[4. Todo Complete]===============\n");
+		System.out.print("Complete number >>> ");
+		int input = Integer.parseInt(br.readLine());
 		
+		service.todoComplete(input);
 	}
 	
 	
@@ -181,7 +191,16 @@ public class TodoListView {
 	 */
 	private void todoUpdate() throws NumberFormatException, IOException {
 		System.out.println("\n===============[5. Todo Update]===============\n");
+		System.out.print("Update number >>> ");
+		int input = Integer.parseInt(br.readLine());
 		
+		System.out.print("title >>>");
+		String title =br.readLine();
+		
+		System.out.print("detail >>>");
+		String detail =br.readLine();
+		
+		service.todoUpdate(input, title, detail);
 	}
 	
 	
@@ -190,7 +209,10 @@ public class TodoListView {
 	
 	private void todoDelete() throws NumberFormatException, IOException {
 		System.out.println("\n===============[6. Todo Delete]===============\n");
+		System.out.print("Delete number >>> ");
+		int input = Integer.parseInt(br.readLine());
 		
+		service.todoDelete(input);
 		
 	}
 	

@@ -102,6 +102,7 @@ public class TodoListServiceImpl implements TodoListService{
 	// 변경 성공 시 true, 실패시 false
 	@Override
 	public boolean todoComplete(int index) throws FileNotFoundException, IOException {
+		
 		return dao.todoComplete(index);
 	}
 	
@@ -113,6 +114,7 @@ public class TodoListServiceImpl implements TodoListService{
 	@Override
 	public boolean todoUpdate(int index, String title, String detail) throws FileNotFoundException, IOException {
 		
+
 		return dao.todoUpdate(index, title, detail);
 	}
 	
