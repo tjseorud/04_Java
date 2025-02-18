@@ -29,12 +29,17 @@ public class TodoListDAOImpl implements TodoListDAO{
 		// TodoList.bin 파일이 없으면 새로운 List 생성, 있으면 읽어오기
 		File file = new File(FILE_PATH);
 		
-		if(!file.exists()) {
-			todoList =new ArrayList<Todo>();
+		if(file.exists()) {
+			try {
+				ois =new ObjectInputStream(new FileInputStream(FILE_PATH));	
+				// 객체 생성 시 외부 파일에 작성된 List<Todo> 객체를 입력 받아 todoList에 대입
+				todoList =(ArrayList<Todo>) ois.readObject();
+				
+			} finally {
+				if(ois != null) ois.close();
+			}			
 		} else {
-			ois =new ObjectInputStream(new FileInputStream(file));	
-			// 객체 생성 시 외부 파일에 작성된 List<Todo> 객체를 입력 받아 todoList에 대입
-			todoList =(List<Todo>) ois.readObject();
+			todoList =new ArrayList<Todo>();
 		}
 		
 	}
@@ -71,10 +76,9 @@ public class TodoListDAOImpl implements TodoListDAO{
 	// 전달 받은 index 번째 todo를 반환, 없으면 null
 	@Override
 	public Todo todoDetailView(int index) {
-//		if(todoList.get(index)) {
-//			
-//		}
-		
+		if(index == todoList.size()) {
+			todoList.get(index);
+		}		
 		return null;
 	}
 	
@@ -97,7 +101,10 @@ public class TodoListDAOImpl implements TodoListDAO{
 	// 할 일 완료 여부 변경 (O <-> X)
 	// 해당 index 요소의 완료 여부가 변경되면 true, index 요소가 없으면 false
 	@Override
-	public boolean todoComplete(int index) throws FileNotFoundException, IOException {
+	public boolean todoComplete(int index) throws FileNotFoundException, IOException {		
+		if(todoList.get(index).isComplete() ==true) {
+			todoList.get(index).isComplete();
+		}		
 		saveFile();
 		return false;
 	}
@@ -109,7 +116,11 @@ public class TodoListDAOImpl implements TodoListDAO{
 	// 성공 시 true, 실패 시 false
 	@Override
 	public boolean todoUpdate(int index, String title, String detail) throws FileNotFoundException, IOException {
-		saveFile();
+		if(index ==todoList.size()) {
+			todoList.get(index).setTitle(title);
+			todoList.get(index).setDetail(detail);
+			saveFile();
+		}
 		return false;
 	}
 	
@@ -120,8 +131,10 @@ public class TodoListDAOImpl implements TodoListDAO{
 	// 성공 시 삭제된 할 일(Todo) 반환,	인덱스 범위 초과로 실패 시 null 반환 
 	@Override
 	public Todo todoDelete(int index) throws FileNotFoundException, IOException{
-		todoList.remove(index);
-		saveFile();
+		if(!(index < 0 ||index >= todoList.size())) {
+			todoList.remove(index);
+			saveFile();
+		}	
 		return null;
 	}
 	

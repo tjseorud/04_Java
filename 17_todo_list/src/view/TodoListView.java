@@ -120,10 +120,15 @@ public class TodoListView {
 	
 	/** 할 일 목록 모두 보기
 	 */
-	private void todoListFullView() {
-		
+	private void todoListFullView() {		
 		System.out.println("\n===============[1. Todo List Full View]===============\n");
-		System.out.println(service.todoListFullView());	
+		Map<String, Object> list = service.todoListFullView();
+		
+		System.out.println("[ 완료된 Todo 개수 / 전체 Todo 수 : "+list+" / "+list.size()+" ]");
+		System.out.println("--------------------------------------------------------------------");
+		System.out.println("인덱스        등록일         완료여부     할 일 제목");
+		System.out.println("--------------------------------------------------------------------");
+		System.out.println(list.toString());	
 	}
 	
 	
@@ -137,11 +142,14 @@ public class TodoListView {
 	private void todoDetailView() throws NumberFormatException, IOException {
 		
 		System.out.println("\n===============[2. Todo Detail View]===============\n");
-		System.out.print("Detail number >>> ");
+		System.out.print("인덱스 번호 입력 : ");
 		int input = Integer.parseInt(br.readLine());
 		
-		service.todoDetailView(input);
-		
+		if(service.todoDetailView(input) ==null) {
+			System.out.println("### 입력한 인덱스 번호에 할 일(Todo)가 존재하지 않습니다 ###");
+		}else {
+			System.out.println(service.todoDetailView(input).toString());
+		}
 	}
 	
 	
@@ -155,13 +163,21 @@ public class TodoListView {
 	private void todoAdd() throws IOException {
 		
 		System.out.println("\n===============[3. Todo Add]===============\n");
-		System.out.print("title >>>");
+		System.out.print("할 일 제목 입력 :");
 		String title =br.readLine();
 		
-		System.out.print("detail >>>");
-		String detail =br.readLine();
+		System.out.println("세부 내용 작성 (입력 종료 시 !wq 작성 후 엔터)");		
+		System.out.println("--------------------------------------------------------------------");
+		String detail =null;
 		
-		service.todoAdd(title, detail);
+		do {
+			detail =br.readLine();
+		}
+		while (detail =="!wq");
+			
+		System.out.println("--------------------------------------------------------------------");
+		System.out.println("["+service.todoAdd(title, detail)+"] 인덱스에 추가 되었습니다");
+		
 	}
 	
 	
@@ -174,10 +190,15 @@ public class TodoListView {
 	 */
 	private void todoComplete() throws NumberFormatException, IOException {
 		System.out.println("\n===============[4. Todo Complete]===============\n");
-		System.out.print("Complete number >>> ");
+		System.out.print("O <-> X 변경할 인덱스 번호 입력 :");
 		int input = Integer.parseInt(br.readLine());
 		
-		service.todoComplete(input);
+		if(service.todoDetailView(input) ==null) {
+			System.out.println("### 입력한 인덱스에 Todo가 존재하지 않습니다 ###");
+		}else {
+			service.todoComplete(input);
+			System.out.println("[변경 되었습니다]");
+		}	
 	}
 	
 	
@@ -191,16 +212,31 @@ public class TodoListView {
 	 */
 	private void todoUpdate() throws NumberFormatException, IOException {
 		System.out.println("\n===============[5. Todo Update]===============\n");
-		System.out.print("Update number >>> ");
+		System.out.print("수정할 To do인덱스 번호 입력 :");
 		int input = Integer.parseInt(br.readLine());
 		
-		System.out.print("title >>>");
-		String title =br.readLine();
-		
-		System.out.print("detail >>>");
-		String detail =br.readLine();
-		
-		service.todoUpdate(input, title, detail);
+		if(service.todoDetailView(input) ==null) {
+			System.out.println("### 입력한 인덱스 번호에 할 일(Todo)가 존재하지 않습니다 ###");
+		}else {
+			System.out.println("@@@@@@@@@@@[수정 전]@@@@@@@@@@@@@@@");
+			System.out.println(service.todoDetailView(input));
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			
+			System.out.print("수정할 제목 :");
+			String title =br.readLine();
+			
+			System.out.println("\n수정할 세부 내용 작성 (입력 종료 시 !wq 작성 후 엔터)");
+			System.out.println("[세부 내용]\n--------------------------------------------------------------------");
+			String detail =null;		
+			
+			do {
+				detail =br.readLine();
+			}
+			while (detail =="!wq");
+			
+			service.todoUpdate(input, title, detail);
+			System.out.println("--------------------------------------------------------------------\n[수정 되었습니다]");
+		}
 	}
 	
 	
@@ -209,14 +245,14 @@ public class TodoListView {
 	
 	private void todoDelete() throws NumberFormatException, IOException {
 		System.out.println("\n===============[6. Todo Delete]===============\n");
-		System.out.print("Delete number >>> ");
+		System.out.print("삭제할 인덱스 번호 입력 :");
 		int input = Integer.parseInt(br.readLine());
 		
-		service.todoDelete(input);
-		
+		if(service.todoDetailView(input) ==null) {
+			System.out.println("### 입력한 인덱스에 Todo가 존재하지 않습니다 ###");
+		}else {	
+			service.todoDelete(input);
+			System.out.println("[삭제 되었습니다]");
+		}		
 	}
-	
-	
-	
-	
 }

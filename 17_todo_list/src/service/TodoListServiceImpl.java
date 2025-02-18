@@ -112,8 +112,7 @@ public class TodoListServiceImpl implements TodoListService{
 	// 할 일 수정
 	// 수정 성공 true, 실패 시 false
 	@Override
-	public boolean todoUpdate(int index, String title, String detail) throws FileNotFoundException, IOException {
-		
+	public boolean todoUpdate(int index, String title, String detail) throws FileNotFoundException, IOException {		
 
 		return dao.todoUpdate(index, title, detail);
 	}
